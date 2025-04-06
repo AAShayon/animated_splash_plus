@@ -6,6 +6,12 @@
 - ⚙️ Optional center widget during initial animation
 - 🔄 Completion callback for navigation
 
+## Demo
+
+| ![Animated Splash Demo](assets/animated_splash.gif) |
+|:--:|
+| *Animated Splash Screen* |
+
 ## Installation
 
 Add to your `pubspec.yaml`:
