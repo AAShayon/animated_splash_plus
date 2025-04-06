@@ -1,4 +1,4 @@
-## 1.0.0 (Initial Release)
+## 1.0.2 (Initial Release)
 
 - Initial release of the `animated_splash_plus` package.
 - Added smooth sunset gradient background animation.
