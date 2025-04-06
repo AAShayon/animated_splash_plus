@@ -8,9 +8,9 @@
 
 ## Demo
 
-| ![Animated Splash Demo](assets/animated_splash.gif) |
-|:--:|
-| *Animated Splash Screen* |
+<img src="assets/animated%20splash.gif" width="365" height="600" alt="Animated Splash Demo">
+
+*Animated Splash Screen*
 
 ## Installation
 
