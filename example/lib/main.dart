@@ -10,9 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: AnimatedSplashPlus(
-        firstText: "Business",
-        secondText: "Manager",
-        subtitle: "Your Business Solution Partner",
+        firstText: 'Business',
+        secondText: 'Manager',
+        subtitle: 'Your Business Solution',
+        welcomeText: 'Loading...',
         onComplete: () {
           // Navigate to your main app
         },
