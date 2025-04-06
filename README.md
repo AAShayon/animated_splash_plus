@@ -16,7 +16,7 @@ A beautiful, customizable animated splash screen package for Flutter application
 ## Demo
 
 
-![Animated Splash Demo](https://raw.githubusercontent.com/AAShayon/animated_splash_plus/main/assets/animated_splash.gif)
+![Animated Splash Demo](https://raw.githubusercontent.com/AAShayon/animated_splash_plus/main/assets/animatedsplash.gif)
 
 *Animated Splash Screen*
 
