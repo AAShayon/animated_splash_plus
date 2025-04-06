@@ -1,3 +1,10 @@
+# Animated Splash Plus
+
+[![pub package](https://img.shields.io/pub/v/animated_splash_plus.svg)](https://pub.dev/packages/animated_splash_plus)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
+A beautiful, customizable animated splash screen package for Flutter applications.
 ## Features
 
 - 🌅 Smooth sunset gradient background animation
@@ -8,7 +15,8 @@
 
 ## Demo
 
-<img src="assets/animated%20splash.gif" width="365" height="600" alt="Animated Splash Demo">
+
+![Animated Splash Demo](https://raw.githubusercontent.com/AAShayon/animated_splash_plus/main/assets/animated splash.gif)
 
 *Animated Splash Screen*
 
@@ -78,16 +86,6 @@ To run the example:
 | `gradientColors`       | `List<Color>?` | Custom gradient colors             | Sunset gradient           |
 | `onComplete`           | `VoidCallback?`| Animation completion callback      | `null`                    |
 
-
-
-## Example Code Structure
-
-example/
-├── lib/
-│   └── main.dart         # Main example code
-├── test/
-│   └── widget_test.dart  # Example tests
-└── pubspec.yaml          # Example dependencies
 
 
 Example App Code (example/lib/main.dart)
