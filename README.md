@@ -1,39 +1,130 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- 🌅 Smooth sunset gradient background animation
+- ✨ Customizable text animations (slide-in, fade-in)
+- 🎨 Configurable colors, fonts, and durations
+- ⚙️ Optional center widget during initial animation
+- 🔄 Completion callback for navigation
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add to your `pubspec.yaml`:
+
+dependencies:
+  animated_splash_plus: ^1.0.0
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Basic Usage
 
 ```dart
-const like = 'sample';
+import 'package:animated_splash_plus/animated_splash_plus.dart';
+
+MaterialApp(
+  home: AnimatedSplashPlus(
+    firstText: 'Business',
+    secondText: 'Manager',
+    subtitle: 'Your Business Solution',
+    welcomeText: 'Loading...',
+    onComplete: () {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
+    },
+  ),
+);
 ```
+Advanced Usage with Customizations
+ ``` AnimatedSplashPlus(
+  firstText: 'Hello',
+  secondText: 'World',
+  firstTextColor: Colors.blue,
+  secondTextColor: Colors.green,
+  sunsetDuration: Duration(seconds: 2),
+  textAnimationDuration: Duration(seconds: 1),
+  customCenterWidget: FlutterLogo(size: 100),
+  gradientColors: [Colors.purple, Colors.pink, Colors.deepOrange],
+);
+  ```
+Example Project
+For a complete working example, see the example directory in this repository.
 
-## Additional information
+To run the example:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+1.Clone the repository.
+2.Navigate to the example folder.
+3.Run flutter pub get.
+4.Run flutter run.
+
+## Customization Options
+
+| Parameter             | Type           | Description                        | Default Value            |
+|------------------------|----------------|------------------------------------|---------------------------|
+| `firstText`            | `String`       | First text to display              | **Required**              |
+| `secondText`           | `String`       | Second text to display             | **Required**              |
+| `subtitle`             | `String?`      | Optional subtitle text             | `null`                    |
+| `welcomeText`          | `String`       | Welcome/bottom text                | `"Welcome"`               |
+| `firstTextColor`       | `Color`        | Color of first text                | `Colors.white`            |
+| `secondTextColor`      | `Color`        | Color of second text               | `Colors.white`            |
+| `subtitleColor`        | `Color?`       | Color of subtitle                  | `Colors.white70`          |
+| `welcomeTextColor`     | `Color`        | Color of welcome text              | `Colors.white70`          |
+| `sunsetDuration`       | `Duration`     | Background animation duration      | `Duration(seconds: 3)`    |
+| `textAnimationDuration`| `Duration`     | Text animations duration           | `Duration(seconds: 2)`    |
+| `customCenterWidget`   | `Widget?`      | Custom widget during initial phase | `null`                    |
+| `gradientColors`       | `List<Color>?` | Custom gradient colors             | Sunset gradient           |
+| `onComplete`           | `VoidCallback?`| Animation completion callback      | `null`                    |
+
+
+
+## Example Code Structure
+
+example/
+├── lib/
+│   └── main.dart         # Main example code
+├── test/
+│   └── widget_test.dart  # Example tests
+└── pubspec.yaml          # Example dependencies
+
+
+Example App Code (example/lib/main.dart)
+
+``` import 'package:flutter/material.dart';
+import 'package:animated_splash_plus/animated_splash_plus.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Animated Splash Plus Demo',
+      home: AnimatedSplashPlus(
+        firstText: 'Business',
+        secondText: 'Manager',
+        subtitle: 'Your Business Solution',
+        welcomeText: 'Loading...',
+        onComplete: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const HomePage()),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home')),
+      body: const Center(child: Text('Welcome to the app!')),
+    );
+  }
+}
+```
+Contributing
+Contributions are welcome! Please open an issue or submit a pull request for any improvements.
