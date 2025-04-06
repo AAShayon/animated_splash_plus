@@ -259,83 +259,8 @@ class _AnimatedSplashPlusState extends State<AnimatedSplashPlus>   with TickerPr
     );
   }
 
-  Widget _buildTextAnimations() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        _buildMainTextRow(),
-        if (widget.subtitle != null) _buildSubtitle(),
-        _buildWelcomeText(),
-      ],
-    );
-  }
-
-  Widget _buildMainTextRow() {
-    return Opacity(
-      opacity: _controller.textValue,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Transform.translate(
-            offset: Offset(-_getOffsetValue(_controller.textValue), 0),
-            child: Text(
-              widget.firstText,
-              style: TextStyle(
-                fontSize: widget.firstTextSize,
-                color: widget.firstTextColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const SizedBox(width: 10),
-          Transform.translate(
-            offset: Offset(_getOffsetValue(_controller.textValue), 0),
-            child: Text(
-              widget.secondText,
-              style: TextStyle(
-                fontSize: widget.secondTextSize,
-                color: widget.secondTextColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   double _getOffsetValue(double animationValue) {
     return MediaQuery.of(context).size.width * 0.2 * (1 - animationValue);
-  }
-
-  Widget _buildSubtitle() {
-    return Opacity(
-      opacity: _controller.textValue,
-      child: Text(
-        widget.subtitle!,
-        style: TextStyle(
-          fontSize: widget.subtitleSize,
-          color: widget.subtitleColor ?? widget.welcomeTextColor,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildWelcomeText() {
-    return Transform.translate(
-      offset: Offset(0, _getWelcomeOffsetValue(_controller.welcomeValue)),
-      child: Opacity(
-        opacity: _controller.welcomeValue,
-        child: Text(
-          widget.welcomeText,
-          style: TextStyle(
-            fontSize: widget.welcomeTextSize,
-            color: widget.welcomeTextColor,
-            fontStyle: FontStyle.italic,
-          ),
-        ),
-      ),
-    );
   }
 
   double _getWelcomeOffsetValue(double animationValue) {
