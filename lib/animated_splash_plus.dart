@@ -1,4 +1,4 @@
 library animated_splash_plus;
 
-export 'src/splash_widget.dart';
-export 'src/splash_controller.dart';
+export 'src/splash_config.dart';
+export 'src/animated_splash_plus.dart';

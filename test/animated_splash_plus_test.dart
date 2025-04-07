@@ -7,42 +7,60 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: AnimatedSplashPlus(
-          firstText: 'Business',
-          secondText: 'Manager',
-          subtitle: 'Your Business Solution',
-          welcomeText: 'Loading...',
-          // Skip animations for testing
-          sunsetDuration: Duration.zero,
-          textAnimationDuration: Duration.zero,
+          config: SplashConfig(
+            appNamePart1: 'Business',
+            appNamePart2: 'Manager',
+            subtitle: 'Your Business Solution Partner',
+            welcomeText: 'Welcome',
+          ),
         ),
       ),
     );
 
-    // Need to pump to complete animations
-    await tester.pump();
+    // Need to pump multiple times to complete animations
+    await tester.pumpAndSettle();
 
     expect(find.text('Business'), findsOneWidget);
     expect(find.text('Manager'), findsOneWidget);
-    expect(find.text('Your Business Solution'), findsOneWidget);
-    expect(find.text('Loading...'), findsOneWidget);
+    expect(find.text('Your Business Solution Partner'), findsOneWidget);
+    expect(find.text('Welcome'), findsOneWidget);
   });
 
-  testWidgets('Should work without optional parameters', (tester) async {
+  testWidgets('Should work with default parameters', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: AnimatedSplashPlus(),
+      ),
+    );
+
+    await tester.pumpAndSettle();
+
+    // Check for default values
+    expect(find.text('Business'), findsOneWidget);
+    expect(find.text('Manager'), findsOneWidget);
+    expect(find.text('Your Business Solution Partner'), findsOneWidget);
+    expect(find.text('Welcome'), findsOneWidget);
+  });
+
+  testWidgets('Should handle custom text values', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: AnimatedSplashPlus(
-          firstText: 'App',
-          secondText: 'Name',
-          sunsetDuration: Duration.zero,
-          textAnimationDuration: Duration.zero,
+          config: SplashConfig(
+            appNamePart1: 'My',
+            appNamePart2: 'App',
+            subtitle: 'Custom Subtitle',
+            welcomeText: 'Loading...',
+          ),
         ),
       ),
     );
 
-    await tester.pump();
+    await tester.pumpAndSettle();
 
+    expect(find.text('My'), findsOneWidget);
     expect(find.text('App'), findsOneWidget);
-    expect(find.text('Name'), findsOneWidget);
-    expect(find.text('Loading...'), findsNothing);
+    expect(find.text('Custom Subtitle'), findsOneWidget);
+    expect(find.text('Loading...'), findsOneWidget);
   });
 }

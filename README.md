@@ -32,31 +32,42 @@ dependencies:
 Basic Usage
 
 ```dart
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:animated_splash_plus/animated_splash_plus.dart';
 
-MaterialApp(
-  home: AnimatedSplashPlus(
-    firstText: 'Business',
-    secondText: 'Manager',
-    subtitle: 'Your Business Solution',
-    welcomeText: 'Loading...',
-    onComplete: () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
-    },
-  ),
-);
-```
-Advanced Usage with Customizations
- ``` AnimatedSplashPlus(
-  firstText: 'Hello',
-  secondText: 'World',
-  firstTextColor: Colors.blue,
-  secondTextColor: Colors.green,
-  sunsetDuration: Duration(seconds: 2),
-  textAnimationDuration: Duration(seconds: 1),
-  customCenterWidget: FlutterLogo(size: 100),
-  gradientColors: [Colors.purple, Colors.pink, Colors.deepOrange],
-);
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AnimatedSplashPlus(
+        config: SplashConfig(
+          appName: 'Business Manager',
+          appNamePart1: 'Business',
+          appNamePart2: 'Manager',
+          subtitle: 'Your Business Solution Partner',
+          welcomeText: 'Welcome',
+          // Add any other customizations here
+          // sunsetDuration: Duration(seconds: 4),
+          // textAnimationDuration: Duration(seconds: 2),
+          // sunStartColor: Colors.yellow,
+          // sunEndColor: Colors.red,
+        ),
+        // Optional: Add a callback when animation completes
+        onAnimationComplete: () {
+          log('Splash animation completed');//add your call back here
+          // You can add navigation logic here
+        },
+      ),
+    );
+  }
+}
   ```
 Example Project
 For a complete working example, see the example directory in this repository.
@@ -70,27 +81,41 @@ To run the example:
 
 ## Customization Options
 
-| Parameter             | Type           | Description                        | Default Value            |
-|------------------------|----------------|------------------------------------|---------------------------|
-| `firstText`            | `String`       | First text to display              | **Required**              |
-| `secondText`           | `String`       | Second text to display             | **Required**              |
-| `subtitle`             | `String?`      | Optional subtitle text             | `null`                    |
-| `welcomeText`          | `String`       | Welcome/bottom text                | `"Welcome"`               |
-| `firstTextColor`       | `Color`        | Color of first text                | `Colors.white`            |
-| `secondTextColor`      | `Color`        | Color of second text               | `Colors.white`            |
-| `subtitleColor`        | `Color?`       | Color of subtitle                  | `Colors.white70`          |
-| `welcomeTextColor`     | `Color`        | Color of welcome text              | `Colors.white70`          |
-| `sunsetDuration`       | `Duration`     | Background animation duration      | `Duration(seconds: 3)`    |
-| `textAnimationDuration`| `Duration`     | Text animations duration           | `Duration(seconds: 2)`    |
-| `customCenterWidget`   | `Widget?`      | Custom widget during initial phase | `null`                    |
-| `gradientColors`       | `List<Color>?` | Custom gradient colors             | Sunset gradient           |
-| `onComplete`           | `VoidCallback?`| Animation completion callback      | `null`                    |
+| Parameter               | Type          | Description                                                           | Default Value                |
+|--------------------------|---------------|-----------------------------------------------------------------------|-------------------------------|
+| `appName`                | `String`      | Full name of the app displayed during the splash screen              | `"Business Manager"`         |
+| `appNamePart1`           | `String`      | First part of the app name (e.g., "Business")                         | `"Business"`                 |
+| `appNamePart2`           | `String`      | Second part of the app name (e.g., "Manager")                         | `"Manager"`                  |
+| `subtitle`               | `String?`     | Optional subtitle text displayed below the app name                  | `"Your Business Solution Partner"` |
+| `welcomeText`            | `String`      | Text displayed at the bottom (e.g., "Welcome")                        | `"Welcome"`                  |
+| `sunsetDuration`         | `Duration`    | Duration of the sunset gradient background animation                  | `Duration(seconds: 3)`       |
+| `textAnimationDuration`  | `Duration`    | Duration of text animations (slide-in, fade-in)                        | `Duration(seconds: 2)`       |
+| `sunStartColor`          | `Color`       | Starting color of the sun                                              | `Colors.orange`              |
+| `sunEndColor`            | `Color`       | Ending color of the sun                                                | `Colors.red`                 |
+| `skyStartTopColor`       | `Color`       | Top color of the sky at animation start                                | `Color(0xFFFFD700)`          |
+| `skyStartMiddleColor`    | `Color`       | Middle color of the sky at animation start                             | `Color(0xFFFFA500)`          |
+| `skyStartBottomColor`    | `Color`       | Bottom color of the sky at animation start                             | `Color(0xFF4B0082)`          |
+| `skyEndTopColor`         | `Color`       | Top color of the sky at animation end                                  | `Color(0xFFFF4500)`          |
+| `skyEndMiddleColor`      | `Color`       | Middle color of the sky at animation end                               | `Color(0xFF8B0000)`          |
+| `skyEndBottomColor`      | `Color`       | Bottom color of the sky at animation end                               | `Color(0xFF000000)`          |
+| `appNameTextStyle`       | `TextStyle`   | Text style for the app name                                            | `fontSize: 34, fontWeight: bold, color: white` |
+| `subtitleTextStyle`      | `TextStyle`   | Text style for the subtitle                                            | `fontSize: 16, color: white70` |
+| `welcomeTextStyle`       | `TextStyle`   | Text style for the welcome text                                        | `fontSize: 28, fontStyle: italic, color: white70` |
+| `sunSize`                | `double`      | Size of the animated sun                                               | `100`                       |
+| `sunScaleFactor`         | `double`      | Scaling factor for the sun during the animation                        | `0.3`                       |
+| `sunsetCurve`            | `Curve`       | Animation curve for the sunset background                             | `Curves.easeInOut`           |
+| `textAppearCurve`        | `Curve`       | Animation curve for the text appearance                               | `Curves.easeOut`             |
+| `welcomeTextCurve`       | `Curve`       | Animation curve for the welcome text                                  | `Curves.easeOut`             |
+| `onComplete`             | `VoidCallback?` | Callback when the splash animation completes                          | `null`                      |
 
 
 
-Example App Code (example/lib/main.dart)
+Example Usage (example/lib/main.dart)
 
-``` import 'package:flutter/material.dart';
+
+Here’s an example of how to use the updated AnimatedSplashPlus widget with advanced customization:
+``` 
+import 'package:flutter/material.dart';
 import 'package:animated_splash_plus/animated_splash_plus.dart';
 
 void main() => runApp(const MyApp());
@@ -101,13 +126,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Animated Splash Plus Demo',
+      debugShowCheckedModeBanner: false,
       home: AnimatedSplashPlus(
-        firstText: 'Business',
-        secondText: 'Manager',
-        subtitle: 'Your Business Solution',
-        welcomeText: 'Loading...',
-        onComplete: () {
+        config: SplashConfig(
+          appName: 'My Awesome App',
+          appNamePart1: 'My',
+          appNamePart2: 'App',
+          subtitle: 'Your Ultimate Solution',
+          welcomeText: 'Loading...',
+          sunsetDuration: const Duration(seconds: 4),
+          textAnimationDuration: const Duration(seconds: 3),
+          sunStartColor: Colors.yellow,
+          sunEndColor: Colors.deepOrange,
+          skyStartTopColor: const Color(0xFF87CEEB),
+          skyStartMiddleColor: const Color(0xFF00BFFF),
+          skyStartBottomColor: const Color(0xFF1E90FF),
+          skyEndTopColor: const Color(0xFF4682B4),
+          skyEndMiddleColor: const Color(0xFF0000CD),
+          skyEndBottomColor: const Color(0xFF00008B),
+          appNameTextStyle: const TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          subtitleTextStyle: const TextStyle(
+            fontSize: 18,
+            color: Colors.white70,
+          ),
+          welcomeTextStyle: const TextStyle(
+            fontSize: 30,
+            fontStyle: FontStyle.italic,
+            color: Colors.white70,
+          ),
+          sunSize: 120,
+          sunScaleFactor: 0.4,
+          sunsetCurve: Curves.easeInOutCubic,
+          textAppearCurve: Curves.easeInOutQuad,
+          welcomeTextCurve: Curves.easeInOutQuart,
+        ),
+        onAnimationComplete: () {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (_) => const HomePage()),
