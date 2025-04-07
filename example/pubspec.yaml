@@ -1,0 +1,19 @@
+name: animated_splash_plus_example
+description: Demonstrates how to use the animated_splash_plus package
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  animated_splash_plus:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

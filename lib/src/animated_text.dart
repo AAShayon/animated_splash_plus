@@ -26,8 +26,7 @@ class AnimatedAppNameText extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Transform.translate(
-            offset: Offset(
-                -screenWidth * 0.2 * (1 - animation.value), 0),
+            offset: Offset(-screenWidth * 0.2 * (1 - animation.value), 0),
             child: Text(
               part1,
               style: textStyle.copyWith(shadows: shadows),
@@ -35,8 +34,7 @@ class AnimatedAppNameText extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Transform.translate(
-            offset: Offset(
-                screenWidth * 0.2 * (1 - animation.value), 0),
+            offset: Offset(screenWidth * 0.2 * (1 - animation.value), 0),
             child: Text(
               part2,
               style: textStyle.copyWith(shadows: shadows),

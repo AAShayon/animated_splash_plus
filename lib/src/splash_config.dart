@@ -94,7 +94,8 @@ class SplashConfig {
       subtitle: subtitle ?? this.subtitle,
       welcomeText: welcomeText ?? this.welcomeText,
       sunsetDuration: sunsetDuration ?? this.sunsetDuration,
-      textAnimationDuration: textAnimationDuration ?? this.textAnimationDuration,
+      textAnimationDuration:
+          textAnimationDuration ?? this.textAnimationDuration,
       sunStartColor: sunStartColor ?? this.sunStartColor,
       sunEndColor: sunEndColor ?? this.sunEndColor,
       skyStartTopColor: skyStartTopColor ?? this.skyStartTopColor,

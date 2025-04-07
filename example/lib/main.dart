@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         // Optional: Add a callback when animation completes
         onAnimationComplete: () {
-          log('Splash animation completed');//add your call back here
+          log('Splash animation completed'); //add your call back here
           // You can add navigation logic here
         },
       ),

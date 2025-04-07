@@ -10,7 +10,7 @@ class AnimatedSplashPlus extends StatefulWidget {
     super.key,
     SplashConfig? config,
     this.onAnimationComplete,
-  })  : config = config ?? const SplashConfig();
+  }) : config = config ?? const SplashConfig();
 
   @override
   State<AnimatedSplashPlus> createState() => _AnimatedSplashPlusState();
