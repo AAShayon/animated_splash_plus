@@ -3,9 +3,31 @@ import 'splash_config.dart';
 import 'sun_widget.dart';
 import 'animated_text.dart';
 
+/// A highly customizable animated splash screen for Flutter apps.
+///
+/// Features:
+/// - Beautiful sunset animation 🌅
+/// - Configurable text animations
+/// - Callback when animation completes
+///
+/// ```dart
+/// AnimatedSplashPlus(
+///   config: SplashConfig(),
+///   onAnimationComplete: () => print("Done!"),
+/// )
+/// ``
 class AnimatedSplashPlus extends StatefulWidget {
+  /// Configuration for the splash screen animations and styling.
   final SplashConfig config;
+
+  /// Callback triggered when all animations complete.
+
   final VoidCallback? onAnimationComplete;
+
+  /// Creates an [AnimatedSplashPlus].
+  ///
+  /// - [config]: Controls colors, text, and animation settings.
+  /// - [onAnimationComplete]: Called when animations finish.
   const AnimatedSplashPlus({
     super.key,
     SplashConfig? config,

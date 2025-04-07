@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 
+
+/// Configuration for [AnimatedSplashPlus] animations and appearance.
+///
+/// Example:
+/// ```dart
+/// SplashConfig(
+///   appNamePart1: 'My',
+///   appNamePart2: 'App',
+///   sunsetDuration: Duration(seconds: 3),
+/// )
+/// ```
+
 class SplashConfig {
+  /// First part of the app name (e.g., "Business" in "Business Manager").
+
   final String appName;
+  /// Second part of the app name (e.g., "Manager" in "Business Manager").
+
   final String appNamePart1;
   final String appNamePart2;
   final String subtitle;
