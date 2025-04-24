@@ -25,7 +25,7 @@ A beautiful, customizable animated splash screen package for Flutter application
 Add to your `pubspec.yaml`:
 
 dependencies:
-  animated_splash_plus: ^1.0.0
+  animated_splash_plus: ^1.0.3
 
 ## Usage
 
@@ -106,6 +106,7 @@ To run the example:
 | `sunsetCurve`            | `Curve`       | Animation curve for the sunset background                             | `Curves.easeInOut`           |
 | `textAppearCurve`        | `Curve`       | Animation curve for the text appearance                               | `Curves.easeOut`             |
 | `welcomeTextCurve`       | `Curve`       | Animation curve for the welcome text                                  | `Curves.easeOut`             |
+| `sunImage`               | `ImageProvider?`| Optional image provider for the sun widget                            | `null`                      |
 | `onComplete`             | `VoidCallback?` | Callback when the splash animation completes                          | `null`                      |
 
 
@@ -130,6 +131,7 @@ class MyApp extends StatelessWidget {
       home: AnimatedSplashPlus(
         config: SplashConfig(
           appName: 'My Awesome App',
+          sunImage:AssetImage('assets/images/sun.png') ,
           appNamePart1: 'My',
           appNamePart2: 'App',
           subtitle: 'Your Ultimate Solution',

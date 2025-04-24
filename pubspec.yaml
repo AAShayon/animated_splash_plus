@@ -1,6 +1,6 @@
 name: animated_splash_plus
 description: A highly customizable animated splash screen package for Flutter with beautiful sunset effects and text animations.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/AAShayon/animated_splash_plus
 
 environment:

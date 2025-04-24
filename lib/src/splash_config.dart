@@ -1,46 +1,88 @@
 import 'package:flutter/material.dart';
 
 
-/// Configuration for [AnimatedSplashPlus] animations and appearance.
+/// A configuration class for customizing the [AnimatedSplashPlus] widget.
 ///
-/// Example:
-/// ```dart
-/// SplashConfig(
-///   appNamePart1: 'My',
-///   appNamePart2: 'App',
-///   sunsetDuration: Duration(seconds: 3),
-/// )
-/// ```
-
+/// This class allows you to define various properties for the splash screen,
+/// including colors, animations, text styles, and an optional sun image.
 class SplashConfig {
-  /// First part of the app name (e.g., "Business" in "Business Manager").
-
+  /// The full name of the app displayed on the splash screen.
   final String appName;
-  /// Second part of the app name (e.g., "Manager" in "Business Manager").
 
+  /// The first part of the app name (e.g., "Business").
   final String appNamePart1;
+
+  /// The second part of the app name (e.g., "Manager").
   final String appNamePart2;
+
+  /// The subtitle displayed below the app name.
   final String subtitle;
+
+  /// The welcome text displayed during the splash animation.
   final String welcomeText;
+
+  /// The duration of the sunset animation.
   final Duration sunsetDuration;
+
+  /// The duration of the text animation.
   final Duration textAnimationDuration;
+
+  /// The starting color of the sun.
   final Color sunStartColor;
+
+  /// The ending color of the sun.
   final Color sunEndColor;
+
+  /// The top color of the sky at the start of the animation.
   final Color skyStartTopColor;
+
+  /// The middle color of the sky at the start of the animation.
   final Color skyStartMiddleColor;
+
+  /// The bottom color of the sky at the start of the animation.
   final Color skyStartBottomColor;
+
+  /// The top color of the sky at the end of the animation.
   final Color skyEndTopColor;
+
+  /// The middle color of the sky at the end of the animation.
   final Color skyEndMiddleColor;
+
+  /// The bottom color of the sky at the end of the animation.
   final Color skyEndBottomColor;
+
+  /// The text style for the app name.
   final TextStyle appNameTextStyle;
+
+  /// The text style for the subtitle.
   final TextStyle subtitleTextStyle;
+
+  /// The text style for the welcome text.
   final TextStyle welcomeTextStyle;
+
+  /// The size of the sun widget.
   final double sunSize;
+
+  /// The scaling factor applied to the sun during the sunset animation.
   final double sunScaleFactor;
+
+  /// The curve used for the sunset animation.
   final Curve sunsetCurve;
+
+  /// The curve used for the text appearance animation.
   final Curve textAppearCurve;
+
+  /// The curve used for the welcome text animation.
   final Curve welcomeTextCurve;
 
+  /// An optional image provider for the sun widget.
+  ///
+  /// If provided, this image will replace the gradient-based sun.
+  final ImageProvider? sunImage;
+
+  /// Creates a new instance of [SplashConfig].
+  ///
+  /// All parameters are optional and have default values.
   const SplashConfig({
     this.appName = 'Business Manager',
     this.appNamePart1 = 'Business',
@@ -76,8 +118,12 @@ class SplashConfig {
     this.sunsetCurve = Curves.easeInOut,
     this.textAppearCurve = Curves.easeOut,
     this.welcomeTextCurve = Curves.easeOut,
+    this.sunImage, // Optional image provider for the sun
   });
 
+  /// Creates a copy of this [SplashConfig] with specified fields replaced.
+  ///
+  /// Use this method to modify specific properties while keeping the rest unchanged.
   SplashConfig copyWith({
     String? appName,
     String? appNamePart1,
@@ -102,6 +148,7 @@ class SplashConfig {
     Curve? sunsetCurve,
     Curve? textAppearCurve,
     Curve? welcomeTextCurve,
+    ImageProvider? sunImage, // Add sunImage to copyWith
   }) {
     return SplashConfig(
       appName: appName ?? this.appName,
@@ -111,7 +158,7 @@ class SplashConfig {
       welcomeText: welcomeText ?? this.welcomeText,
       sunsetDuration: sunsetDuration ?? this.sunsetDuration,
       textAnimationDuration:
-          textAnimationDuration ?? this.textAnimationDuration,
+      textAnimationDuration ?? this.textAnimationDuration,
       sunStartColor: sunStartColor ?? this.sunStartColor,
       sunEndColor: sunEndColor ?? this.sunEndColor,
       skyStartTopColor: skyStartTopColor ?? this.skyStartTopColor,
@@ -128,6 +175,7 @@ class SplashConfig {
       sunsetCurve: sunsetCurve ?? this.sunsetCurve,
       textAppearCurve: textAppearCurve ?? this.textAppearCurve,
       welcomeTextCurve: welcomeTextCurve ?? this.welcomeTextCurve,
+      sunImage: sunImage ?? this.sunImage, // Add sunImage to copyWith
     );
   }
 }

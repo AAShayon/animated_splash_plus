@@ -16,18 +16,19 @@ import 'animated_text.dart';
 ///   onAnimationComplete: () => print("Done!"),
 /// )
 /// ``
+/// A customizable animated splash screen widget for Flutter.
+///
+/// This widget provides a beautiful sunset effect with animated text and an optional sun image.
 class AnimatedSplashPlus extends StatefulWidget {
-  /// Configuration for the splash screen animations and styling.
+  /// The configuration for the splash screen.
   final SplashConfig config;
 
-  /// Callback triggered when all animations complete.
-
+  /// A callback invoked when the splash animation completes.
   final VoidCallback? onAnimationComplete;
 
-  /// Creates an [AnimatedSplashPlus].
+  /// Creates a new instance of [AnimatedSplashPlus].
   ///
-  /// - [config]: Controls colors, text, and animation settings.
-  /// - [onAnimationComplete]: Called when animations finish.
+  /// The [config] parameter is optional and defaults to a new [SplashConfig] instance.
   const AnimatedSplashPlus({
     super.key,
     SplashConfig? config,
@@ -51,7 +52,7 @@ class _AnimatedSplashPlusState extends State<AnimatedSplashPlus>
   void initState() {
     super.initState();
 
-    // Sunset animation controller
+    // Initialize sunset animation controller
     _sunsetController = AnimationController(
       vsync: this,
       duration: widget.config.sunsetDuration,
@@ -62,7 +63,7 @@ class _AnimatedSplashPlusState extends State<AnimatedSplashPlus>
       curve: widget.config.sunsetCurve,
     );
 
-    // Text animation controller (starts after sunset completes)
+    // Initialize text animation controller
     _textController = AnimationController(
       vsync: this,
       duration: widget.config.textAnimationDuration,
@@ -147,6 +148,7 @@ class _AnimatedSplashPlusState extends State<AnimatedSplashPlus>
                     endColor: widget.config.sunEndColor,
                     size: widget.config.sunSize,
                     scaleFactor: widget.config.sunScaleFactor,
+                    image: widget.config.sunImage, // Pass the optional image
                   ),
                 ),
 
