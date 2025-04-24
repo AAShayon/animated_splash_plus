@@ -164,7 +164,7 @@ class _AnimatedSplashPlusState extends State<AnimatedSplashPlus>
                       shadows: [
                         Shadow(
                           blurRadius: 10,
-                          color: Colors.black.withOpacity(0.5),
+                          color: Colors.black.withAlpha((0.5 * 255).round()),
                         )
                       ],
                     ),
